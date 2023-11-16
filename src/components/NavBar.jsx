@@ -19,7 +19,7 @@ export const NavBar = () => {
             </Link>
             <Link href="/login">
               <li>
-                Login
+                Login 
               </li>
             </Link>
           </ul>

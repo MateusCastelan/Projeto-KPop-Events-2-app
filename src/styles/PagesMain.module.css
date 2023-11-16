@@ -1,0 +1,19 @@
+.homeContainer {
+  background-image: url(../../public/bg2.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.75;
+  padding-bottom: 50px;
+}
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background: url(../../public/bg3.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+}

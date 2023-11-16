@@ -1,10 +1,9 @@
-import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
 import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
 import { Form } from '@/components/Form'
+
+import styles from '@/styles/PagesMain.module.css'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,7 +20,7 @@ export default function Home() {
   return (
     <>
       <NavBar />
-      <main className={styles.mainContainer}>
+      <main className={styles.homeContainer}>
         {/* outros componentes */}
         {/* <Form
           action="/article/updateArticle/123"

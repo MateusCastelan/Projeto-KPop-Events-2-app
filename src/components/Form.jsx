@@ -38,7 +38,7 @@ export const Form = ({ action, method, formTitle, formFields, buttonLabel, initi
 
   return (
     <section className={styles.mainContainer}>
-      <article className={styles.container} >
+      <article className={styles.container}>
         <form
           action={action}
           method={method}
