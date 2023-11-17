@@ -5,9 +5,9 @@ export const Footer = () => {
   return (
     <footer className={styles.footerContainer}>
       <section>
-        <i class='bx bxl-twitter bx-md'></i>
-        <i class='bx bxl-instagram bx-md'></i>
-        <i class='bx bxl-youtube bx-md'></i>
+        <i className='bx bxl-twitter bx-md'></i>
+        <i className='bx bxl-instagram bx-md'></i>
+        <i className='bx bxl-youtube bx-md'></i>
       </section>
       <p>Todos os direitos reservados © 2023</p>
     </footer>

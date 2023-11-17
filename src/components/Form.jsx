@@ -4,21 +4,21 @@ import axios from 'axios';
 
 import styles from '../styles/Form.module.css'
 
-export const Form = ({ action, method, formTitle, formFields, buttonLabel, initialValues }) => {
-  const [formValues, setFormValues] = useState({});
+export const Form = ({ action, formTitle, formFields, buttonLabel, initialValues }) => {
+  // const [formValues, setFormValues] = useState(initialValues || {});
 
-  useEffect(() => {
-    // Preencher os valores iniciais quando a prop initialValues mudar
-    setFormValues(initialValues || {});
-  }, [initialValues]);
+  // useEffect(() => {
+  //   // Preencher os valores iniciais quando a prop initialValues mudar
+  //   setFormValues(initialValues || {});
+  // }, [initialValues]);
 
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormValues((prevValues) => ({
-      ...prevValues,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
-  };
+  // const handleChange = (e) => {
+  //   const { name, value, type, checked } = e.target;
+  //   setFormValues((prevValues) => ({
+  //     ...prevValues,
+  //     [name]: type === 'checkbox' ? checked : value,
+  //   }));
+  // };
 
   const getSectionClassName = (field) => {
     if (field.type === 'checkbox') {
@@ -32,20 +32,46 @@ export const Form = ({ action, method, formTitle, formFields, buttonLabel, initi
     }
   };
 
+  const getLabelClassName = (field) => {
+    if (field.type === 'email') {
+      return styles.emailInput;
+    } else {
+      return '';
+    }
+  }
+
+  const getMainContainerClassName = (formTitle) => {
+    if (formTitle === 'Cadastro de Usuário' || 'Editar Usuário') {
+      return styles.mainCtnSignUp;
+    } else {
+      return styles.mainContainer
+    }
+  }
+
+  const getContainerClassName = (formTitle) => {
+    if (formTitle === 'Cadastro de Usuário' || 'Editar Usuário') {
+      return styles.cntSignUp;
+    } else {
+      return styles.container;
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
   };
 
   return (
-    <section className={styles.mainContainer}>
-      <article className={styles.container}>
+    <section 
+      className={getMainContainerClassName(formTitle)}
+    >
+      <article className={getContainerClassName(formTitle)}>
         <form
           action={action}
-          method={method}
+          method='post'
           encType='multipart/form-data'
           onSubmit={handleSubmit}
         >
-          <h1>{formTitle}</h1>
+          <h1 className={styles.title}>{formTitle}</h1>
           {formFields.map((field) => (
             <section
               key={field.id}
@@ -57,12 +83,18 @@ export const Form = ({ action, method, formTitle, formFields, buttonLabel, initi
                     type={field.type}
                     id={field.name}
                     name={field.name}
-                    value={formValues[field.name] || ''}
+                    defaultValue={field.defaultValue}
+                    // value={formValues[field.name] || ''}
                     required={field.required}
                     readOnly={field.readOnly}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                   />
-                  <label htmlFor={field.name}>{field.label}</label>
+                  <label 
+                    htmlFor={field.name} 
+                    className={getLabelClassName(field)}
+                  >
+                    {field.label}
+                  </label>
                 </>
               )}
               {field.type === 'checkbox' && (
@@ -72,8 +104,9 @@ export const Form = ({ action, method, formTitle, formFields, buttonLabel, initi
                     type={field.type}
                     id={field.name}
                     name={field.name}
-                    checked={formValues[field.name] || false}
-                    onChange={handleChange}
+                    defaultValue={field.defaultValue}
+                    // checked={formValues[field.name] || false}
+                    // onChange={handleChange}
                   />
                 </>
               )}
@@ -85,7 +118,7 @@ export const Form = ({ action, method, formTitle, formFields, buttonLabel, initi
                     id={field.name}
                     name={field.name}
                     accept="image/*"
-                    onChange={handleChange}
+                    // onChange={handleChange}
                   />
                 </>
               )}
@@ -95,9 +128,10 @@ export const Form = ({ action, method, formTitle, formFields, buttonLabel, initi
                   <textarea
                     id={field.name}
                     name={field.name}
-                    value={formValues[field.name] || ''}
+                    defaultValue={field.defaultValue}
+                    // value={formValues[field.name] || ''}
                     required={field.required}
-                    onChange={handleChange}
+                    // onChange={handleChange}
                   />
                 </>
               )}

@@ -22,6 +22,21 @@ export const NavBar = () => {
                 Login 
               </li>
             </Link>
+            <Link href="/admin/admin">
+              <li>
+                Admin
+              </li>
+            </Link>
+            <Link href="/createUser">
+              <li>
+                Cad User
+              </li>
+            </Link>
+            <Link href="/editUser">
+              <li>
+                Edit User
+              </li>
+            </Link>
           </ul>
         </nav>
       </section>
