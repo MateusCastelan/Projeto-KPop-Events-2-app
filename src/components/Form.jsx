@@ -20,41 +20,41 @@ export const Form = ({ action, formTitle, formFields, buttonLabel, initialValues
   //   }));
   // };
 
+  const getMainContainerClassName = (formTitle) => {
+    if (formTitle === 'Cadastro de Artigos' || formTitle === 'Atualizar Artigo: [id]') {
+      return styles.mainCtnArticle;
+    } else {
+      return styles.mainContainer;
+    }
+  }
+
+  const getContainerClassName = (formTitle) => {
+    if (formTitle === 'Cadastro de Artigos' || formTitle ==='Atualizar Artigo: [id]') {
+      return styles.cntArticle;
+    } else {
+      return styles.container;
+    }
+  }
+
   const getSectionClassName = (field) => {
     if (field.type === 'checkbox') {
       return styles.check;
     } else if (field.type === 'textarea') {
       return styles.contentText;
     } else if (field.type === 'file') {
-      return '';
+      return styles.file;
     } else {
       return styles.inputBox;
     }
   };
 
-  const getLabelClassName = (field) => {
-    if (field.type === 'email') {
+  const getLabelClassName = (field, formTitle) => {
+    if (field.type === 'email' && formTitle !== 'Cadastro de Usuário') {
       return styles.emailInput;
     } else {
       return '';
     }
-  }
-
-  const getMainContainerClassName = (formTitle) => {
-    if (formTitle === 'Cadastro de Usuário' || 'Editar Usuário') {
-      return styles.mainCtnSignUp;
-    } else {
-      return styles.mainContainer
-    }
-  }
-
-  const getContainerClassName = (formTitle) => {
-    if (formTitle === 'Cadastro de Usuário' || 'Editar Usuário') {
-      return styles.cntSignUp;
-    } else {
-      return styles.container;
-    }
-  }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -91,7 +91,7 @@ export const Form = ({ action, formTitle, formFields, buttonLabel, initialValues
                   />
                   <label 
                     htmlFor={field.name} 
-                    className={getLabelClassName(field)}
+                    className={getLabelClassName(field, formTitle)}
                   >
                     {field.label}
                   </label>

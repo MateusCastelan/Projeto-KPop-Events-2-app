@@ -1,4 +1,4 @@
-.mainContainer, .mainCtnSignUp {
+.mainContainer, .mainCtnArticle {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -8,15 +8,15 @@
 }
 
 .mainContainer {
-  min-height: 150vh;
-}
-
-.mainCtnSignUp {
   min-height: 130vh;
 }
 
+.mainCtnArticle {
+  min-height: 135vh;
+}
+
 /* Containers */
-.container, .cntSignUp {
+.container, .cntArticle {
   width: 700px;
   background: transparent;
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -28,17 +28,18 @@
 }
 
 .container {
-  height: 900px;
+  height: 700px;
 }
 
-.cntSignUp {
-  height: 700px;
+.cntArticle {
+  height: 920px;
 }
 
 .title {
   font-size: 36px;
   text-align: center;
   text-shadow: 1px 1px 5px #FFD8B8;
+  margin-bottom: 10px;
 }
 
 .inputBox {
@@ -88,11 +89,36 @@
 }
 
 .check {
-  width: 15%;
+  width: 20%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   margin: 0 0 15px;
+}
+
+.file {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+}
+
+.file input::file-selector-button {
+  height: 25px;
+  background-color: #FFC184;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 500ms background-color ease-in-out;
+}
+
+.file input::file-selector-button:hover {
+  background-color: #ff6b6bc9;
+
 }
 
 .contentText {
@@ -139,18 +165,7 @@
   background-position: right; 
 }
 
-.btn:hover::before,
-.btn:focus::before {
-  transform: scaleX(1);
-}
-
 /* Página de edição de artigo */
-#updateArtMain {
-  min-height: 135vh;
-}
-#updateArtCtn {
-  height: 1150px;
-}
 .updateImg {
   width: 25%;
 }

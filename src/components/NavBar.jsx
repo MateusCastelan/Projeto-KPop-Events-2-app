@@ -37,6 +37,16 @@ export const NavBar = () => {
                 Edit User
               </li>
             </Link>
+            <Link href="/createArticle">
+              <li>
+                Create Art
+              </li>
+            </Link>
+            <Link href="/editArticle">
+              <li>
+                Edit Art
+              </li>
+            </Link>
           </ul>
         </nav>
       </section>
