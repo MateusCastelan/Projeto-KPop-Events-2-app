@@ -20,12 +20,6 @@ a {
   color: black;
 }
 
-form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 label {
   font-size: 1.2em;
 }

@@ -70,6 +70,7 @@ export const Form = ({ action, formTitle, formFields, buttonLabel, initialValues
           method='post'
           encType='multipart/form-data'
           onSubmit={handleSubmit}
+          className={styles.form}
         >
           <h1 className={styles.title}>{formTitle}</h1>
           {formFields.map((field) => (

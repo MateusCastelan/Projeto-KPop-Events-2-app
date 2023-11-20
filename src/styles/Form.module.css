@@ -35,6 +35,12 @@
   height: 920px;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .title {
   font-size: 36px;
   text-align: center;

@@ -4,6 +4,7 @@ import { Footer } from '@/components/Footer'
 import { Form } from '@/components/Form'
 
 import styles from '@/styles/PagesMain.module.css'
+import { BarraPesquisa } from '@/components/BarraPesquisa'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -21,6 +22,7 @@ export default function Home() {
     <>
       <NavBar />
       <main className={styles.homeContainer}>
+        <BarraPesquisa/>
         {/* outros componentes */}
         {/* <Form
           action="/article/updateArticle/123"
