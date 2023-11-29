@@ -22,7 +22,7 @@ export const NavBar = () => {
                 Login 
               </li>
             </Link>
-            <Link href="/admin/admin">
+            <Link href="/admin">
               <li>
                 Admin
               </li>
