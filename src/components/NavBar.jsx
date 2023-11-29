@@ -47,6 +47,11 @@ export const NavBar = () => {
                 Edit Art
               </li>
             </Link>
+            <Link href="/article">
+              <li>
+                artigo
+              </li>
+            </Link>
           </ul>
         </nav>
       </section>

@@ -11,6 +11,22 @@
   justify-content: center;
 }
 
+.homeContainer .title {
+  width: 75%;
+  margin: 35px 0;
+  border-bottom: 1px solid #FFF;
+  box-shadow: 0 5px 5px -5px #FFF;
+}
+
+.homeContainer .title h1 {
+  font-weight: 600;
+  text-align: center;
+  font-size: xx-large;
+  padding-bottom: 15px;
+  color: #FFF;
+  text-shadow: 1px 1px 10px #000;
+}
+
 .loginContainer {
   display: flex;
   justify-content: center;
