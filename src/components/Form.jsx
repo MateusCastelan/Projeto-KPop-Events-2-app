@@ -4,21 +4,24 @@ import axios from 'axios';
 
 import styles from '../styles/Form.module.css'
 
-export const Form = ({ action, formTitle, formFields, buttonLabel, initialValues }) => {
-  // const [formValues, setFormValues] = useState(initialValues || {});
+export const Form = ({ action, formTitle, formFields, buttonLabel, onSubmit }) => {
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  // useEffect(() => {
-  //   // Preencher os valores iniciais quando a prop initialValues mudar
-  //   setFormValues(initialValues || {});
-  // }, [initialValues]);
+    const formData = {};
+    formFields.forEach((field) => {
+      if (field.type === 'checkbox') {
+        formData[field.name] = e.target[field.name].checked;
+      } else {
+        formData[field.name] = e.target[field.name].value;
+      }
+    });
 
-  // const handleChange = (e) => {
-  //   const { name, value, type, checked } = e.target;
-  //   setFormValues((prevValues) => ({
-  //     ...prevValues,
-  //     [name]: type === 'checkbox' ? checked : value,
-  //   }));
-  // };
+    if (onSubmit) {
+      onSubmit(formData);
+    }
+  };
 
   const getMainContainerClassName = (formTitle) => {
     if (formTitle === 'Cadastro de Artigos' || formTitle === 'Atualizar Artigo: [id]') {
@@ -54,10 +57,6 @@ export const Form = ({ action, formTitle, formFields, buttonLabel, initialValues
     } else {
       return '';
     }
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
   };
 
   return (
