@@ -6,6 +6,7 @@ import React from 'react'
 import styles from '../styles/PagesMain.module.css'
 
 export default function Login() {
+  
   return (
     <>
       <NavBar/>

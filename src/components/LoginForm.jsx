@@ -3,12 +3,16 @@ import styles from '../styles/LoginForm.module.css'
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import axios from 'axios';
+import { useAuth } from './AuthContext';
+
 
 
 export const LoginForm = () => {
+  const { user, checkAuthentication, logout } = useAuth();
   const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -23,6 +27,7 @@ export const LoginForm = () => {
         });
 
       if (response.status === 200) {
+        checkAuthentication();
         router.push('/editUser');
       } else {
         console.error('Credenciais inválidas', response.data);

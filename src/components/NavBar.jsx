@@ -1,8 +1,11 @@
-import React from 'react'
-import Link from 'next/link'
-import styles from '../styles/NavBar.module.css'
+import {useEffect, React} from 'react';
+import Link from 'next/link';
+import { useAuth } from './AuthContext';
+import styles from '../styles/NavBar.module.css';
 
 export const NavBar = () => {
+  const { user, logout } = useAuth();
+
   return (
     <header className={styles.headerContainer}>
       <section className={styles.logo}>
@@ -13,48 +16,41 @@ export const NavBar = () => {
         <nav>
           <ul>
             <Link href="/">
-              <li>
-                Home
-              </li>
+              <li>Home</li>
             </Link>
-            <Link href="/login">
-              <li>
-                Login 
-              </li>
-            </Link>
-            <Link href="/admin">
-              <li>
-                Admin
-              </li>
-            </Link>
+            {user ? (
+              <>
+                {user.author_level === 'admin' && (
+                  <Link href="/admin">
+                    <li>Admin</li>
+                  </Link>
+                )}
+                <li onClick={logout}>Logout</li>
+              </>
+            ) : (
+              <Link href="/login">
+                <li>Login</li>
+              </Link>
+            )}
+            {/* Adicione outras opções de navegação conforme necessário */}
             <Link href="/createUser">
-              <li>
-                Cad User
-              </li>
+              <li>Cad User</li>
             </Link>
             <Link href="/editUser">
-              <li>
-                Edit User
-              </li>
+              <li>Edit User</li>
             </Link>
             <Link href="/createArticle">
-              <li>
-                Create Art
-              </li>
+              <li>Create Art</li>
             </Link>
             <Link href="/editArticle">
-              <li>
-                Edit Art
-              </li>
+              <li>Edit Art</li>
             </Link>
             <Link href="/article">
-              <li>
-                artigo
-              </li>
+              <li>Artigo</li>
             </Link>
           </ul>
         </nav>
       </section>
     </header>
-  )
-}
+  );
+};
