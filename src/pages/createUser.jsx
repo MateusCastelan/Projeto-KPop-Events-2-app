@@ -1,6 +1,7 @@
 import { Footer } from '@/components/Footer'
 import { Form } from '@/components/Form'
 import { NavBar } from '@/components/NavBar'
+import  PrivateRoute  from '@/components/PrivateRoute'
 import axios from 'axios';
 import React from 'react'
 
@@ -31,6 +32,7 @@ export default function CreateUser() {
 
   return (
     <>
+    <PrivateRoute allowedRoles={'admin'}>
       <NavBar/>
         <Form
           action="/users/createUser"
@@ -40,6 +42,7 @@ export default function CreateUser() {
           onSubmit={handleSubmit}
         />  
       <Footer/>
+      </PrivateRoute>
     </>
   )
 }
