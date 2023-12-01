@@ -23,7 +23,9 @@ export const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await axios.post("http://localhost:8080/api/users/logout");
+      await axios.post("http://localhost:8080/api/users/logout", {}, {
+        withCredentials: true,
+      });
       setUser(null);
     } catch (error) {
       console.error("Erro ao fazer logout:", error.message);
