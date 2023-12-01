@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAuth } from './AuthContext';
 
 const PrivateRoute = ({ children, allowedRoles = null }) => {
@@ -18,8 +18,9 @@ const PrivateRoute = ({ children, allowedRoles = null }) => {
     }
   };
 
-  // Chama a função de autenticação diretamente no componente
-  authenticate();
+  useEffect(() => {
+    authenticate();
+  }, []);
 
   return authorizationChecked && user ? children : null;
 };

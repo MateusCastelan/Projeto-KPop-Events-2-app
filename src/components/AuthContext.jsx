@@ -1,10 +1,13 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
+import { Router, useRouter } from "next/router";
+
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const router = useRouter();
 
   const checkAuthentication = async () => {
     try {
@@ -27,6 +30,8 @@ export const AuthProvider = ({ children }) => {
         withCredentials: true,
       });
       setUser(null);
+      // Redireciona a página de login
+      router.replace('/login');
     } catch (error) {
       console.error("Erro ao fazer logout:", error.message);
     }
