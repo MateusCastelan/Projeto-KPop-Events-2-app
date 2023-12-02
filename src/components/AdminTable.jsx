@@ -1,8 +1,33 @@
-import React from 'react'
+import {React, useEffect, useState} from 'react'
 import styles from '../styles/AdminTable.module.css'
 import Link from 'next/link';
+import axios from 'axios';
+import { useAuth } from './AuthContext';
 
-export const AdminTable = ({ articles, users, user }) => {
+export const AdminTable = ({ users }) => {
+
+  const { user } = useAuth();
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    const fetchArticles = async () => {
+      try {
+        // Ajuste a URL da API conforme necessário
+        const response = await axios.get('http://localhost:8080/api/articles', { withCredentials: true });
+        console.log('Dados dos artigos:', response.data);
+    
+        const articlesData = response.data;
+        const filteredArticles = user.author_level === 'admin'
+          ? articlesData
+          : articlesData.filter(article => article.article_author_id.toString() === user._id.toString());
+        setArticles(filteredArticles);
+      } catch (error) {
+        console.error('Erro ao buscar artigos:', error.message);
+      }
+    };
+
+    fetchArticles();
+  }, [user]);
 
   return (
     <section className={styles.mainContainer}>
@@ -31,16 +56,16 @@ export const AdminTable = ({ articles, users, user }) => {
               <tbody>
                 {articles.map((article, index) => (
                   <tr key={index} className={index % 2 === 0 ? styles.evenRow : styles.oddRow}>
-                    <td>{article.kb_title}</td>
-                    <td>{article.kb_author}</td>
+                    <td>{article.article_title}</td>
+                    <td>{article.article_author}</td>
                     <td>
-                      <Link href={`/article/${article.kb_id}`} className={styles.read}>
+                      <Link href={`/article/${article.article_id}`} className={styles.read}>
                         <i className='bx bx-book-open bx-sm bx-tada-hover'></i>
                       </Link>
-                      <Link href={`/article/updateArticle/${article.kb_id}`} className={styles.edit}>
+                      <Link href={`/article/updateArticle/${article.article_id}`} className={styles.edit}>
                         <i className='bx bxs-edit bx-sm bx-tada-hover'></i>
                       </Link>
-                      <Link href={`/article/delete/${article.kb_id}`} className={styles.delete}>
+                      <Link href={`/article/delete/${article.article_id}`} className={styles.delete}>
                         <i className='bx bx-trash bx-sm bx-tada-hover'></i>
                       </Link>
                     </td>
@@ -51,7 +76,7 @@ export const AdminTable = ({ articles, users, user }) => {
           </section>
         </section>
         {/* Users Section */}
-        {user.author_level === 'admin' && (
+        {user && user.author_level === 'admin' &&(
           <>
             <article className={styles.subTitle}>
               <h2>Usuários</h2>

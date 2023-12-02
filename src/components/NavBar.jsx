@@ -20,7 +20,7 @@ export const NavBar = () => {
             </Link>
             {user ? (
               <>
-                {user.author_level === 'admin' && (
+                {(
                   <Link href="/admin">
                     <li>Admin</li>
                   </Link>

@@ -1,30 +1,48 @@
 import { Footer } from '@/components/Footer'
 import { Form } from '@/components/Form'
 import { NavBar } from '@/components/NavBar'
+import { useAuth } from '@/components/AuthContext'
+import PrivateRoute from '@/components/PrivateRoute'
+import axios from 'axios';
 import React from 'react'
 
 export default function CreateArticle() {
+  const { user } = useAuth();
 
   const formFields = [
-    { id: 1, name: 'kb_title', type: 'text', label: 'Título:', required: true },
-    { id: 2, name: 'kb_summary', type: 'text', label: 'Resumo:', required: true },
-    { id: 3, name: 'kb_keywords', type: 'text', label: 'Palavras-chave:', required: true },
-    { id: 4, name: 'kb_author_email', type: 'email', label: 'Email do Autor:', defaultValue: 'req.session.user.author_email', required: true },
-    { id: 5, name: 'kb_featured', type: 'checkbox', label: 'Destaque', value: 'true' },
-    { id: 6, name: 'kb_image', type: 'file', label: 'Imagem:' }, 
-    { id: 7, name: 'kb_body', type: 'textarea', label: 'Conteúdo:', required: true }
-    // Adicione outros campos conforme necessário
+    { id: 1, name: 'article_title', type: 'text', label: 'Título:', required: true },
+    { id: 2, name: 'article_body', type: 'textarea', label: 'Conteúdo:', required: true },
+    { id: 3, name: 'article_keywords', type: 'text', label: 'Palavras-chave:', required: true },
+    { id: 4, name: 'article_featured', type: 'checkbox', label: 'Destaque', value: 'true' },
+    { id: 5, name: 'article_summary', type: 'text', label: 'Resumo:', required: true },
+    { id: 6, name: 'article_author_email', type: 'hidden', defaultValue: user ? user.author_email : '' },
+    { id: 7, name: 'article_author_id', type: 'hidden', defaultValue: user ? user._id : '' },
+    { id: 8, name: 'article_author_name', type: 'hidden', defaultValue: user ? user.author_name : '' },
   ];
+
+  const handleSubmit = async (formData) => {
+    try {
+      const response = await axios.post("http://localhost:8080/api/articles/cadastro", formData);
+
+      console.log(response.data);
+    } catch (error) {
+      console.error('Erro ao cadastrar artigo:', error.message);
+    }
+  };
 
   return (
     <>
       <NavBar />
-      <Form
-        action="/article/createArticle"
-        formTitle="Cadastro de Artigos"
-        formFields={formFields}
-        buttonLabel="Cadastrar"
-      />
+      <PrivateRoute>
+        <Form
+          action="/article/createArticle"
+          formTitle="Cadastro de Artigos"
+          formFields={formFields}
+          buttonLabel="Cadastrar"
+          onSubmit={handleSubmit}
+          encType="multipart/form-data"
+        />
+      </PrivateRoute>
       <Footer />
     </>
   )
