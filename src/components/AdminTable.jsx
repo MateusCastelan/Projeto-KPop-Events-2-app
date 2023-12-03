@@ -1,8 +1,9 @@
 import {React, useEffect, useState} from 'react'
-import styles from '../styles/AdminTable.module.css'
+import { useAuth } from './AuthContext';
 import Link from 'next/link';
 import axios from 'axios';
-import { useAuth } from './AuthContext';
+
+import styles from '@/styles/AdminTable.module.css'
 
 export const AdminTable = ({ users }) => {
 

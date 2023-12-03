@@ -1,6 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router';
-import styles from '../styles/BarraPesquisa.module.css'
+
+import styles from '@/styles/BarraPesquisa.module.css'
 
 export const BarraPesquisa = () => {
   const router = useRouter();

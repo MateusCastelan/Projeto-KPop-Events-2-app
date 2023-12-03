@@ -1,7 +1,8 @@
 import {useEffect, React} from 'react';
 import Link from 'next/link';
 import { useAuth } from './AuthContext';
-import styles from '../styles/NavBar.module.css';
+
+import styles from '@/styles/NavBar.module.css';
 
 export const NavBar = () => {
   const { user, logout } = useAuth();

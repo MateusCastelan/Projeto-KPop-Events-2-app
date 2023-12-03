@@ -1,6 +1,7 @@
 import React from 'react'
-import styles from '../styles/ArticleHome.module.css';
 import Link from 'next/link';
+
+import styles from '@/styles/ArticleHome.module.css';
 
 export const FeaturedArticles = ({ articles }) => {
   return (

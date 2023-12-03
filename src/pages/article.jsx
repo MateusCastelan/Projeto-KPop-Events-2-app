@@ -1,8 +1,9 @@
 import React from 'react'
 import { ArticleDetails } from '@/components/ArticleDetails';
-import styles from '../styles/PagesMain.module.css'
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
+
+import styles from '@/styles/PagesMain.module.css'
 
 export default function ArticlePage() {
 

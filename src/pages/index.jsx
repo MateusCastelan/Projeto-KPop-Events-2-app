@@ -1,13 +1,11 @@
 import { Inter } from 'next/font/google'
 import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
-
-import styles from '@/styles/PagesMain.module.css'
 import { BarraPesquisa } from '@/components/BarraPesquisa'
 import { FeaturedArticles } from '@/components/FeaturedArticles'
 import { LikedArticles } from '@/components/LikedArticles'
 
-const inter = Inter({ subsets: ['latin'] })
+import styles from '@/styles/PagesMain.module.css'
 
 export default function Home() {
 

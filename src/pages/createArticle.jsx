@@ -32,8 +32,8 @@ export default function CreateArticle() {
 
   return (
     <>
-      <NavBar />
       <PrivateRoute>
+        <NavBar />
         <Form
           action="/article/createArticle"
           formTitle="Cadastro de Artigos"
@@ -42,8 +42,8 @@ export default function CreateArticle() {
           onSubmit={handleSubmit}
           encType="multipart/form-data"
         />
+        <Footer />
       </PrivateRoute>
-      <Footer />
     </>
   )
 }

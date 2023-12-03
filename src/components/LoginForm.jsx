@@ -1,9 +1,10 @@
 import React from 'react'
-import styles from '../styles/LoginForm.module.css'
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from './AuthContext';
+
+import styles from '@/styles/LoginForm.module.css'
 
 
 

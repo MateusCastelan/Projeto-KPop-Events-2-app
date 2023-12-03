@@ -1,5 +1,6 @@
 import React from 'react'
-import styles from '../styles/Article.module.css';
+
+import styles from '@/styles/Article.module.css';
 
 export const ArticleDetails = ({ article }) => {
   return (

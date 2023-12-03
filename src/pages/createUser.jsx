@@ -1,7 +1,7 @@
 import { Footer } from '@/components/Footer'
 import { Form } from '@/components/Form'
 import { NavBar } from '@/components/NavBar'
-import  PrivateRoute  from '@/components/PrivateRoute'
+import PrivateRoute from '@/components/PrivateRoute'
 import axios from 'axios';
 import React from 'react'
 
@@ -13,7 +13,7 @@ export default function CreateUser() {
     { id: 3, name: 'author_user', type: 'text', label: 'Nome de Usuário:', required: true },
     { id: 4, name: 'author_pwd', type: 'password', label: 'Senha:', required: true },
     { id: 5, name: 'author_level', type: 'checkbox', label: 'Admin', value: 'admin' },
-    { id: 6, name: 'author_status', type: 'checkbox', label: 'Ativo', value: 'on', checked: true } 
+    { id: 6, name: 'author_status', type: 'checkbox', label: 'Ativo', value: 'on', checked: true }
   ];
 
   const handleSubmit = async (formData) => {
@@ -32,16 +32,16 @@ export default function CreateUser() {
 
   return (
     <>
-    <PrivateRoute allowedRoles={'admin'}>
-      <NavBar/>
+      <PrivateRoute allowedRoles={'admin'}>
+        <NavBar />
         <Form
           action="/users/createUser"
           formTitle="Cadastro de Usuário"
           formFields={formFields}
           buttonLabel="Cadastrar"
           onSubmit={handleSubmit}
-        />  
-      <Footer/>
+        />
+        <Footer />
       </PrivateRoute>
     </>
   )

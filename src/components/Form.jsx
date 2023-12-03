@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from '../styles/Form.module.css'
+import styles from '@/styles/Form.module.css'
 
 export const Form = ({ action, formTitle, formFields, buttonLabel, onSubmit }) => {
   
