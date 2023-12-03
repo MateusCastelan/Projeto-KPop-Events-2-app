@@ -5,29 +5,33 @@ import axios from 'axios';
 
 import styles from '@/styles/AdminTable.module.css'
 
-export const AdminTable = ({ users }) => {
+export const AdminTable = () => {
 
   const { user } = useAuth();
   const [articles, setArticles] = useState([]);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const fetchArticles = async () => {
+    const fetchData = async () => {
       try {
         // Ajuste a URL da API conforme necessário
-        const response = await axios.get('http://localhost:8080/api/articles', { withCredentials: true });
-        console.log('Dados dos artigos:', response.data);
+        const articleResponse = await axios.get('http://localhost:8080/api/articles', { withCredentials: true });
+        console.log('Dados dos artigos:', articleResponse.data);
     
-        const articlesData = response.data;
-        const filteredArticles = user.author_level === 'admin'
-          ? articlesData
-          : articlesData.filter(article => article.article_author_id.toString() === user._id.toString());
+        const articlesData = articleResponse.data;
+        const filteredArticles = user.author_level === 'admin'? articlesData : articlesData.filter(article => article.article_author_id === user._id);
         setArticles(filteredArticles);
+
+        const usersResponse = await axios.get('http://localhost:8080/api/users/getAll', { withCredentials: true });
+        const usersData = usersResponse.data;
+        setUsers(usersData);
+
       } catch (error) {
         console.error('Erro ao buscar artigos:', error.message);
       }
     };
 
-    fetchArticles();
+    fetchData();
   }, [user]);
 
   return (
@@ -104,7 +108,7 @@ export const AdminTable = ({ users }) => {
                         <td>{user.author_user}</td>
                         <td className={styles.email}>{user.author_email}</td>
                         <td>{user.author_level}</td>
-                        <td>{user.author_status === 'on' ? 'Ativo' : 'Desativado'}</td>
+                        <td>{user.author_status ? 'Ativo' : 'Desativado'}</td>
                         <td>
                           <Link href={`/users/edit/${user.author_id}`} className={styles.edit}>
                             <i className='bx bxs-edit bx-sm bx-tada-hover'></i>
