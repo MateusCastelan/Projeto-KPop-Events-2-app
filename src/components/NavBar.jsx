@@ -34,13 +34,13 @@ export const NavBar = () => {
               </Link>
             )}
             {/* Adicione outras opções de navegação conforme necessário */}
-            <Link href="/createUser">
+            <Link href="/admin/users/createUser">
               <li>Cad User</li>
             </Link>
             <Link href="/editUser">
               <li>Edit User</li>
             </Link>
-            <Link href="/createArticle">
+            <Link href="/admin/articles/createArticle">
               <li>Create Art</li>
             </Link>
             <Link href="/editArticle">

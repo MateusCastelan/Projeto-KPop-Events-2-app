@@ -62,15 +62,15 @@ export const AdminTable = () => {
                 {articles.map((article, index) => (
                   <tr key={index} className={index % 2 === 0 ? styles.evenRow : styles.oddRow}>
                     <td>{article.article_title}</td>
-                    <td>{article.article_author}</td>
+                    <td>{article.article_author_name}</td>
                     <td>
-                      <Link href={`/article/${article.article_id}`} className={styles.read}>
+                      <Link href={`/admin/articles/read/${article._id}`} className={styles.read}>
                         <i className='bx bx-book-open bx-sm bx-tada-hover'></i>
                       </Link>
-                      <Link href={`/article/updateArticle/${article.article_id}`} className={styles.edit}>
+                      <Link href={`/articles/updateArticle/${article.article_id}`} className={styles.edit}>
                         <i className='bx bxs-edit bx-sm bx-tada-hover'></i>
                       </Link>
-                      <Link href={`/article/delete/${article.article_id}`} className={styles.delete}>
+                      <Link href={`/articles/delete/${article.article_id}`} className={styles.delete}>
                         <i className='bx bx-trash bx-sm bx-tada-hover'></i>
                       </Link>
                     </td>

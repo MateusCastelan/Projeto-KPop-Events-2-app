@@ -12,9 +12,9 @@ const PrivateRoute = ({ children, allowedRoles = null }) => {
     setAuthorizationChecked(true);
 
     if (!user) {
-      router.replace('/login');
+      router.replace('/errorPage');
     } else if (allowedRoles && user.author_level !== allowedRoles) {
-      router.replace('/login');
+      router.replace('/errorPage');
     }
   };
 
