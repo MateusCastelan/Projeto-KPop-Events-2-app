@@ -15,7 +15,7 @@ export const AdminTable = () => {
       try {
         // Ajuste a URL da API conforme necessário
         const articleResponse = await axios.get('http://localhost:8080/api/articles', { withCredentials: true });
-        console.log('Dados dos artigos:', articleresponse.data);
+        console.log('Dados dos artigos:', articleResponse.data);
     
         const articlesData = articleResponse.data;
         const filteredArticles = user.author_level === 'admin'? articlesData : articlesData.filter(article => article.article_author_id === user._id);
