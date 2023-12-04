@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+import styles from '@/styles/Article.module.css';
+
 export const LikeButton = ({ articleId, initialLikedCount }) => {
   const [likedCount, setLikedCount] = useState(initialLikedCount);
 
@@ -15,11 +17,13 @@ export const LikeButton = ({ articleId, initialLikedCount }) => {
   };
 
   return (
-    <div>
-      <span>{likedCount}</span>
-      <button onClick={handleLike}>
-        <i className='bx bxs-heart bx-sm'></i>
-      </button>
-    </div>
+    <>
+      <section className={styles.likeContainer}>
+        <span>{likedCount}</span>
+        <button onClick={handleLike} className={styles.btn}>
+          <i className='bx bxs-heart bx-sm'></i>
+        </button>
+      </section>
+    </>
   );
 };

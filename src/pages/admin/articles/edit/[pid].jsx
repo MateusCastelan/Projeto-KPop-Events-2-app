@@ -20,7 +20,7 @@ export default function EditArticle() {
   useEffect(() => {
     const fetchArticleData = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/articles/edit/${pid}`, { withCredentials: true });
+        const response = await axios.get(`http://localhost:8080/api/articles/${pid}`, { withCredentials: true });
         const fetchedArticleData = response.data;
 
         // Atualiza o estado com os dados do artigo

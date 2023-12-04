@@ -1,11 +1,12 @@
 import { useRouter } from 'next/router';
 import { NavBar } from '@/components/NavBar';
 import { Footer } from '@/components/Footer';
-import SearchResults from '@/components/SearchResults';
+import { SearchResults } from '@/components/SearchResults';
+import { BarraPesquisa } from '@/components/BarraPesquisa';
 
 import styles from '@/styles/PagesMain.module.css'
 
-const Search = () => {
+export default function Search() {
 
   const router = useRouter();
   const { keywords } = router.query;
@@ -13,8 +14,11 @@ const Search = () => {
   return (
     <>
       <NavBar />
-      <main className={styles.resultsContainer}>
-        <h1>Resultados da Pesquisa</h1>
+      <main className={styles.homeContainer}>
+        <article className={styles.title}>
+          <h1>Kpop Events</h1>
+        </article>
+        <BarraPesquisa />
         <SearchResults keywords={keywords} />
       </main>
       <Footer />
@@ -22,4 +26,3 @@ const Search = () => {
   );
 };
 
-export default Search;

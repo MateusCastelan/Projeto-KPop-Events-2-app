@@ -17,7 +17,7 @@ export const LikedArticles = ({ articles }) => {
           <Link key={article._id} href={`admin/articles/read/${article._id}`}>
             <section className={styles.newsContainer}>
               <section className={styles.imgContainer}>
-                <img src={article.kb_image || '../img/bg.jpg'} alt="" />
+                <img src={article.kb_image || '/bg.jpg'} alt="" />
               </section>
               <article className={styles.infoContainer}>
                 <h3>{article.article_title}</h3>

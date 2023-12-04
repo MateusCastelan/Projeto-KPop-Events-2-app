@@ -1,10 +1,9 @@
-import { Inter } from 'next/font/google'
 import { NavBar } from '@/components/NavBar'
 import { Footer } from '@/components/Footer'
 import { BarraPesquisa } from '@/components/BarraPesquisa'
 import { FeaturedArticles } from '@/components/FeaturedArticles'
 import { LikedArticles } from '@/components/LikedArticles'
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import styles from '@/styles/PagesMain.module.css'
@@ -35,15 +34,15 @@ export default function Home() {
         <article className={styles.title}>
           <h1>Kpop Events</h1>
         </article>
-        <BarraPesquisa/>
+        <BarraPesquisa />
         <FeaturedArticles
-           articles={articles}
+          articles={articles}
         />
         <LikedArticles
           articles={articles}
         />
       </main>
-      <Footer/>
+      <Footer />
     </>
   )
 }
