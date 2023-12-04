@@ -1,8 +1,17 @@
-import React from 'react'
+import {React, useState} from 'react'
 
 import styles from '@/styles/Form.module.css'
 
-export const Form = ({ action, formTitle, formFields, buttonLabel, onSubmit }) => {
+export const Form = ({ action, formTitle, formFields, buttonLabel, onSubmit, initialFormData }) => {
+  const [formData, setFormData] = useState(initialFormData || {});
+
+  const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -103,8 +112,7 @@ export const Form = ({ action, formTitle, formFields, buttonLabel, onSubmit }) =
                     id={field.name}
                     name={field.name}
                     defaultValue={field.defaultValue}
-                    // checked={formValues[field.name] || false}
-                    // onChange={handleChange}
+
                   />
                 </>
               )}

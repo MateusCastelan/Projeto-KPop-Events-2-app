@@ -29,7 +29,7 @@ export const LoginForm = () => {
 
       if (response.status === 200) {
         checkAuthentication();
-        router.push('/editUser');
+        router.push('/admin');
       } else {
         console.error('Credenciais inválidas', response.data);
       }

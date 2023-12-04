@@ -16,7 +16,6 @@ export const AdminTable = () => {
       try {
         // Ajuste a URL da API conforme necessário
         const articleResponse = await axios.get('http://localhost:8080/api/articles', { withCredentials: true });
-        console.log('Dados dos artigos:', articleResponse.data);
     
         const articlesData = articleResponse.data;
         const filteredArticles = user.author_level === 'admin'? articlesData : articlesData.filter(article => article.article_author_id === user._id);
@@ -67,7 +66,7 @@ export const AdminTable = () => {
                       <Link href={`/admin/articles/read/${article._id}`} className={styles.read}>
                         <i className='bx bx-book-open bx-sm bx-tada-hover'></i>
                       </Link>
-                      <Link href={`/articles/updateArticle/${article.article_id}`} className={styles.edit}>
+                      <Link href={`admin/articles/edit/${article._id}`} className={styles.edit}>
                         <i className='bx bxs-edit bx-sm bx-tada-hover'></i>
                       </Link>
                       <Link href={`/articles/delete/${article.article_id}`} className={styles.delete}>
@@ -87,7 +86,7 @@ export const AdminTable = () => {
               <h2>Usuários</h2>
             </article>
             <section className={styles.groupContainer}>
-              <Link href="/users/signup" className={styles.createContainer}>
+              <Link href="admin/users/createUser" className={styles.createContainer}>
                 <i className='bx bx-plus bx-sm'></i>
                 Cadastro de Usuário
               </Link>
@@ -110,7 +109,7 @@ export const AdminTable = () => {
                         <td>{user.author_level}</td>
                         <td>{user.author_status ? 'Ativo' : 'Desativado'}</td>
                         <td>
-                          <Link href={`/users/edit/${user.author_id}`} className={styles.edit}>
+                          <Link href={`admin/users/edit/${user._id}`} className={styles.edit}>
                             <i className='bx bxs-edit bx-sm bx-tada-hover'></i>
                           </Link>
                         </td>
