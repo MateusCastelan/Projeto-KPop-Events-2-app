@@ -2,7 +2,7 @@ import React from 'react'
 
 import styles from '@/styles/Form.module.css'
 
-export const Form = ({ action, formTitle, formFields, buttonLabel, onSubmit }) => {
+export const Form = ({ type, formTitle, formFields, buttonLabel, onSubmit }) => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,16 +21,16 @@ export const Form = ({ action, formTitle, formFields, buttonLabel, onSubmit }) =
     }
   };
 
-  const getMainContainerClassName = (formTitle) => {
-    if (formTitle === 'Cadastro de Artigos' || formTitle === 'Atualizar Artigo: [id]') {
+  const getMainContainerClassName = (formType) => {
+    if (formType === 'Article') {
       return styles.mainCtnArticle;
     } else {
       return styles.mainContainer;
     }
   }
 
-  const getContainerClassName = (formTitle) => {
-    if (formTitle === 'Cadastro de Artigos' || formTitle ==='Atualizar Artigo: [id]') {
+  const getContainerClassName = (formType) => {
+    if (formType === 'Article') {
       return styles.cntArticle;
     } else {
       return styles.container;
@@ -44,6 +44,8 @@ export const Form = ({ action, formTitle, formFields, buttonLabel, onSubmit }) =
       return styles.contentText;
     } else if (field.type === 'file') {
       return styles.file;
+    } else if(field.type === 'hidden'){
+      return styles.hidden
     } else {
       return styles.inputBox;
     }
@@ -59,11 +61,10 @@ export const Form = ({ action, formTitle, formFields, buttonLabel, onSubmit }) =
 
   return (
     <section 
-      className={getMainContainerClassName(formTitle)}
+      className={getMainContainerClassName(type)}
     >
-      <article className={getContainerClassName(formTitle)}>
+      <article className={getContainerClassName(type)}>
         <form
-          action={action}
           method='post'
           encType='multipart/form-data'
           onSubmit={handleSubmit}

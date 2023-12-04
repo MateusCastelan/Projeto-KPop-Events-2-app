@@ -10,14 +10,59 @@ export default function CreateArticle() {
   const { user } = useAuth();
 
   const formFields = [
-    { id: 1, name: 'article_title', type: 'text', label: 'Título:', required: true },
-    { id: 2, name: 'article_body', type: 'textarea', label: 'Conteúdo:', required: true },
-    { id: 3, name: 'article_keywords', type: 'text', label: 'Palavras-chave:', required: true },
-    { id: 4, name: 'article_featured', type: 'checkbox', label: 'Destaque', value: 'true' },
-    { id: 5, name: 'article_summary', type: 'text', label: 'Resumo:', required: true },
-    { id: 6, name: 'article_author_email', type: 'hidden', defaultValue: user ? user.author_email : '' },
-    { id: 7, name: 'article_author_id', type: 'hidden', defaultValue: user ? user._id : '' },
-    { id: 8, name: 'article_author_name', type: 'hidden', defaultValue: user ? user.author_name : '' },
+    { 
+      id: 1, 
+      name: 'article_title', 
+      type: 'text', 
+      label: 'Título:', 
+      required: true 
+    },
+    { 
+      id: 2, 
+      name: 'article_summary', 
+      type: 'text', 
+      label: 'Resumo:', 
+      required: true 
+    },
+    { 
+      id: 3, 
+      name: 'article_keywords', 
+      type: 'text', 
+      label: 'Palavras-chave:', 
+      required: true 
+    },
+    { 
+      id: 4, 
+      name: 'article_featured', 
+      type: 'checkbox',
+      label: 'Destaque', 
+      value: 'true' 
+    },
+    { 
+      id: 5, 
+      name: 'article_body', 
+      type: 'textarea', 
+      label: 'Conteúdo:', 
+      required: true 
+    },
+    { 
+      id: 6, 
+      name: 'article_author_email', 
+      type: 'hidden', 
+      defaultValue: user ? user.author_email : '' 
+    },
+    { 
+      id: 7, 
+      name: 'article_author_id', 
+      type: 'hidden', 
+      defaultValue: user ? user._id : '' 
+    },
+    { 
+      id: 8, 
+      name: 'article_author_name', 
+      type: 'hidden', 
+      defaultValue: user ? user.author_name : '' 
+    },
   ];
 
   const handleSubmit = async (formData) => {
@@ -35,12 +80,11 @@ export default function CreateArticle() {
       <PrivateRoute>
         <NavBar />
         <Form
-          action="/article/createArticle"
+          type={"Article"}
           formTitle="Cadastro de Artigos"
           formFields={formFields}
           buttonLabel="Cadastrar"
           onSubmit={handleSubmit}
-          encType="multipart/form-data"
         />
         <Footer />
       </PrivateRoute>

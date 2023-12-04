@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-const LikeButton = ({ articleId, initialLikedCount }) => {
+export const LikeButton = ({ articleId, initialLikedCount }) => {
   const [likedCount, setLikedCount] = useState(initialLikedCount);
 
   const handleLike = async () => {
@@ -23,5 +23,3 @@ const LikeButton = ({ articleId, initialLikedCount }) => {
     </div>
   );
 };
-
-export default LikeButton;

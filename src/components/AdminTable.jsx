@@ -44,7 +44,7 @@ export const AdminTable = () => {
           <h2>Artigos</h2>
         </article>
         <section className={styles.groupContainer}>
-          <Link href="/article/createArticle" className={styles.createContainer}>
+          <Link href="/admin/articles/createArticle" className={styles.createContainer}>
             <i className='bx bx-plus bx-sm'></i>
             Cadastro de Artigo
           </Link>

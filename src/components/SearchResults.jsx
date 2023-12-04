@@ -1,12 +1,11 @@
-import {React, useState, useEffect} from 'react';
+import { React, useState, useEffect } from 'react';
 import Link from 'next/link';
 import axios from 'axios'
 
 import styles from '@/styles/PagesMain.module.css'
 
-
-const SearchResults = ({ keywords }) => {
-    const [searchResults, setSearchResults] = useState([]);
+export const SearchResults = ({ keywords }) => {
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     const fetchSearchResults = async () => {
@@ -42,4 +41,3 @@ const SearchResults = ({ keywords }) => {
   );
 };
 
-export default SearchResults;

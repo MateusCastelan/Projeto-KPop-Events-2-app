@@ -145,6 +145,11 @@
   outline-color: #FFC184;
   resize: none;
   text-align: justify;
+  padding: 10px;
+}
+
+.hidden {
+  display: none;
 }
 
 .btn {

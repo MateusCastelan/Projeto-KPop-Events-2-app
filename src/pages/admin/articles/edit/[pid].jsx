@@ -37,11 +37,45 @@ export default function EditArticle() {
   }, [pid]);
 
   const formFields = [
-    { id: 1, name: 'article_title', type: 'text', label: 'Título:', defaultValue: articleData.article_title, required: true },
-    { id: 2, name: 'article_body', type: 'textarea', label: 'Conteúdo:', defaultValue: articleData.article_body, required: true },
-    { id: 3, name: 'article_keywords', type: 'text', label: 'Palavras-chave:', defaultValue: articleData.article_keywords, required: true },
-    { id: 4, name: 'article_featured', type: 'checkbox', label: 'Destaque', defaultChecked: articleData.article_featured },
-    { id: 5, name: 'article_author_email', type: 'email', label: 'Email do Autor:', defaultValue: articleData.article_author_email, required: true },
+    { 
+      id: 1, 
+      name: 'article_title', 
+      type: 'text', 
+      label: 'Título:', 
+      defaultValue: articleData.article_title, 
+      required: true 
+    },
+    { 
+      id: 2, 
+      name: 'article_keywords', 
+      type: 'text', 
+      label: 'Palavras-chave:', 
+      defaultValue: articleData.article_keywords, 
+      required: true 
+    },
+    { 
+      id: 3, 
+      name: 'article_author_email', 
+      type: 'email', 
+      label: 'Email do Autor:',
+      defaultValue: articleData.article_author_email, 
+      required: true 
+    },
+    { 
+      id: 4, 
+      name: 'article_featured', 
+      type: 'checkbox', 
+      label: 'Destaque', 
+      defaultChecked: articleData.article_featured 
+    },
+    { 
+      id: 5, 
+      name: 'article_body', 
+      type: 'textarea', 
+      label: 'Conteúdo:', 
+      defaultValue: articleData.article_body, 
+      required: true 
+    }
   ];
 
   const handleUpdateArticle = async (formData) => {
@@ -58,6 +92,7 @@ export default function EditArticle() {
     <>
       <NavBar />
       <Form
+        type={"Article"}
         formTitle={`Atualizar Artigo: ${articleData.article_title}`}
         formFields={formFields}
         buttonLabel="Atualizar Artigo"
