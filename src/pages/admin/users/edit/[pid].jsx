@@ -1,10 +1,14 @@
 import { Footer } from '@/components/Footer';
 import { Form } from '@/components/Form';
 import { NavBar } from '@/components/NavBar';
+import { useRouter } from 'next/router';
 import React from 'react';
 import axios from 'axios';
 
 export default function EditUser({ user }) {
+
+const router = useRouter();
+
   const formFields = [
     { id: 1, name: 'author_name', type: 'text', label: 'Nome:', defaultValue: user.author_name, required: true },
     { id: 2, name: 'author_email', type: 'email', label: 'Email:', defaultValue: user.author_email, required: true },
@@ -23,6 +27,22 @@ export default function EditUser({ user }) {
     author_status: user.author_status,
   };
 
+  const handleUpdateUser = async (formData) => {
+    try {
+      formData.author_level = formData.author_level ? 'admin' : 'user';
+      formData.author_status = formData.author_status || false;
+
+      const response = await axios.put(`http://localhost:8080/api/users/${user._id}`, formData, { withCredentials: true });
+
+      console.log(response.data);
+      router.push(`/`);
+
+    } catch (error) {
+      console.error('Erro ao atualizar usuário:', error.message);
+
+    }
+  };
+
   return (
     <>
       <NavBar />
@@ -31,6 +51,7 @@ export default function EditUser({ user }) {
         formTitle={`Editar Usuário: ${user.author_name}`}
         formFields={formFields}
         buttonLabel="Atualizar Usuário"
+        onSubmit={handleUpdateUser}
         initialFormData={initialFormData}
       />
       <Footer />

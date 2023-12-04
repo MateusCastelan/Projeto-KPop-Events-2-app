@@ -1,9 +1,11 @@
 import { Footer } from '@/components/Footer'
 import { Form } from '@/components/Form'
 import { NavBar } from '@/components/NavBar'
+import { useRouter } from 'next/router';
 import PrivateRoute from '@/components/PrivateRoute'
 import axios from 'axios';
 import React from 'react'
+
 
 export default function CreateUser() {
 
@@ -24,6 +26,7 @@ export default function CreateUser() {
       const response = await axios.post("http://localhost:8080/api/users/cadastro", formData);
 
       console.log(response.data);
+      router.push(`/`);
 
     } catch (error) {
       console.error('Erro ao cadastrar usuário:', error.message);

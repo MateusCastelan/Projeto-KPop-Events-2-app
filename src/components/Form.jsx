@@ -1,17 +1,8 @@
-import {React, useState} from 'react'
+import React from 'react'
 
 import styles from '@/styles/Form.module.css'
 
-export const Form = ({ action, formTitle, formFields, buttonLabel, onSubmit, initialFormData }) => {
-  const [formData, setFormData] = useState(initialFormData || {});
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
-  };
+export const Form = ({ action, formTitle, formFields, buttonLabel, onSubmit }) => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();

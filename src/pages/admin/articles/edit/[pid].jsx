@@ -58,7 +58,7 @@ export default function EditArticle() {
     <>
       <NavBar />
       <Form
-        formTitle={`Atualizar Artigo: ${pid}`}
+        formTitle={`Atualizar Artigo: ${articleData.article_title}`}
         formFields={formFields}
         buttonLabel="Atualizar Artigo"
         onSubmit={handleUpdateArticle}
