@@ -5,7 +5,7 @@ import styles from '@/styles/ArticleHome.module.css';
 
 export const LikedArticles = ({ articles }) => {
 
-  const sortedArticles = articles.sort((a, b) => b.kb_liked_count - a.kb_liked_count);
+  const sortedArticles = articles.sort((a, b) => b.article_liked_count - a.article_liked_count);
 
   return (
     <section className={styles.container}>
@@ -14,14 +14,14 @@ export const LikedArticles = ({ articles }) => {
       </article>
       <section className={styles.groupContainer}>
         {sortedArticles.map((article) => (
-          <Link key={article.kb_id} href={`/article/${article.kb_id}`}>
+          <Link key={article._id} href={`admin/articles/read/${article._id}`}>
             <section className={styles.newsContainer}>
               <section className={styles.imgContainer}>
-                <img src={article.kb_image || '../img/default.jpg'} alt="" />
+                <img src={article.kb_image || '../img/bg.jpg'} alt="" />
               </section>
               <article className={styles.infoContainer}>
-                <h3>{article.kb_title}</h3>
-                <p>{article.kb_summary}</p>
+                <h3>{article.article_title}</h3>
+                <p>{article.article_summary}</p>
               </article>
             </section>
           </Link>

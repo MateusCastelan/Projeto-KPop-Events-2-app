@@ -11,15 +11,15 @@ export const FeaturedArticles = ({ articles }) => {
       </article>
       <section className={styles.groupContainer}>
         {articles.map((article) => (
-          article.kb_featured && (
-            <Link key={article.kb_id} href={`/article/${article.kb_id}`}>
+          article.article_featured && (
+            <Link key={article._id} href={`admin/articles/read/${article._id}`}>
               <section className={styles.newsContainer}>
                 <section className={styles.imgContainer}>
                   <img src={article.kb_image} alt="Imagem do Artigo" />
                 </section>
                 <article className={styles.infoContainer}>
-                  <h3>{article.kb_title}</h3>
-                  <p>{article.kb_summary}</p>
+                  <h3>{article.article_title}</h3>
+                  <p>{article.article_summary}</p>
                 </article>
               </section>
             </Link>
