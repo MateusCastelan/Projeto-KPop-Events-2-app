@@ -14,7 +14,6 @@ export const AdminTable = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Ajuste a URL da API conforme necessário
         const articleResponse = await axios.get('http://localhost:8080/api/articles', { withCredentials: true });
     
         const articlesData = articleResponse.data;
@@ -32,6 +31,17 @@ export const AdminTable = () => {
 
     fetchData();
   }, [user]);
+
+
+  const handleDeleteArticle = async (articleId) => {
+    try {
+      const response = await axios.delete(`http://localhost:8080/api/articles/delete/${articleId}`, { withCredentials: true });
+      const updatedArticles = articles.filter(a => a._id !== articleId);
+      setArticles(updatedArticles);
+    } catch (error) {
+      console.error('Erro ao excluir artigo:', error.message);
+    }
+  };
 
   return (
     <section className={styles.mainContainer}>
@@ -69,9 +79,9 @@ export const AdminTable = () => {
                       <Link href={`admin/articles/edit/${article._id}`} className={styles.edit}>
                         <i className='bx bxs-edit bx-sm bx-tada-hover'></i>
                       </Link>
-                      <Link href={`/articles/delete/${article.article_id}`} className={styles.delete}>
-                        <i className='bx bx-trash bx-sm bx-tada-hover'></i>
-                      </Link>
+                      <button onClick={() => handleDeleteArticle(article._id)} className={styles.delete}>
+                        <i className='bx bx-trash bx-sm bx-tada-hover'></i> 
+                      </button>
                     </td>
                   </tr>
                 ))}

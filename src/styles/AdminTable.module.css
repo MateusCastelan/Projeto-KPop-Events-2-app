@@ -146,4 +146,6 @@
 
 .delete {
   color: #FF5E62;
+  background: none;
+  border: none;
 }
