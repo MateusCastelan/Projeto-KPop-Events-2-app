@@ -34,7 +34,8 @@ export const LoginForm = () => {
         console.error('Credenciais inválidas', response.data);
       }
     } catch (err) {
-      console.error('Erro ao fazer login:', err.message);
+      alert('Erro ao fazer login. Tente novamente.');
+      // console.error('Erro ao fazer login:', err.message);
     }
   };
 

@@ -3,11 +3,13 @@ import { Form } from '@/components/Form'
 import { NavBar } from '@/components/NavBar'
 import { useAuth } from '@/components/AuthContext'
 import PrivateRoute from '@/components/PrivateRoute'
+import { useRouter } from 'next/router';
 import axios from 'axios';
 import React from 'react'
 
 export default function CreateArticle() {
   const { user } = useAuth();
+  const router = useRouter();
 
   const formFields = [
     { 
@@ -68,8 +70,9 @@ export default function CreateArticle() {
   const handleSubmit = async (formData) => {
     try {
       const response = await axios.post("http://localhost:8080/api/articles/cadastro", formData);
-
+      
       console.log(response.data);
+      router.push(`/`);
     } catch (error) {
       console.error('Erro ao cadastrar artigo:', error.message);
     }
